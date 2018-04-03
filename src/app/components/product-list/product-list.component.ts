@@ -1,27 +1,25 @@
 import { Component, OnInit } from '@angular/core';
 import { Product } from '../../domain/product';
+import { Services } from '@angular/core/src/view';
+import { ProductService } from '../../services/product.service';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
+  // providers: [ProductService]
 })
 export class ProductListComponent implements OnInit {
  // data:string ['Cafe', 'Tea' , 'Jus', 'Coca-cola'];
   data: Product [];
 
-  constructor() {
-    this.data = [
-      {code: 'p1', label : 'Cafe', unitPrice: 500.5},
-      {code: 'p2', label : 'Tea', unitPrice: 800.5},
-      {code: 'p3', label : 'Jus', unitPrice: 400.5},
-      {code: 'p4', label : 'Coca-cola', unitPrice: 600.5},
-      {code: 'p5', label : 'Water', unitPrice: 600.5}
-  ];
+  constructor(private _service: ProductService) { // declarer un dépendancz
+    // this.data = Services.
 
    }
 
-  ngOnInit() {
+  ngOnInit() { // equivalent @postConstruct de Java EE
+    this.data = this._service.getListProduct();
   }
 
 }
