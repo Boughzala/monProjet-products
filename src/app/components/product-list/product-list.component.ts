@@ -19,7 +19,12 @@ export class ProductListComponent implements OnInit {
    }
 
   ngOnInit() { // equivalent @postConstruct de Java EE
-    this.data = this._service.getListProduct();
+   // this.data = this._service.getListProduct();
+
+   this._service.getListProduct().subscribe(
+result => {this.data = result; }
+
+   );
   }
 
 }
