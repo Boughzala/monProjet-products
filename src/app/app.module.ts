@@ -10,14 +10,9 @@ import { ProductService } from './services/product.service';
 import { HttpClientModule } from '@angular/common/http';
 import { WelcomeComponent } from './components/welcome/welcome.component';
 import { NotFoundComponent } from './components/not-found/not-found.component';
+import { RoutingModule } from './routing-module/routting.module';
 
-const rootes: Route[] = [
-  {path : 'welcome', component : WelcomeComponent},
-  {path : 'list', component : ProductListComponent},
-  {path : '', component : WelcomeComponent, pathMatch: 'full'},
-  {path : '**', component : NotFoundComponent},
 
-];
 
 @NgModule({
   declarations: [
@@ -30,8 +25,7 @@ const rootes: Route[] = [
   ],
   imports: [
     BrowserModule,
-    HttpClientModule,
-    RouterModule.forRoot(rootes)
+    HttpClientModule, RoutingModule
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]
